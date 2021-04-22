@@ -33,3 +33,9 @@ nav {
   border: none;
   cursor: pointer;
 }
+
+.filter-search {
+  width: 25%;
+  display: flex;
+  justify-content: space-evenly;
+}

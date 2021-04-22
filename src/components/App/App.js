@@ -51,6 +51,20 @@ class App extends Component {
           </div>
         </nav>
         <Container championData={this.state.championData} />
+        <Route
+          exact path ='/:id'
+          render={({ match }) => {
+            const champion = this.state.championData.find(champion => {
+              return champion.id === match.params.id;
+            })
+            if(!champion) {
+              return (<h1>This Champion does not exist!</h1>)
+            }
+            return (
+              <SingleChampionView id={match.params.id} />
+            )
+          }}
+        />
       </section>
     )
   }

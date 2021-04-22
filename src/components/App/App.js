@@ -2,15 +2,23 @@ import './App.css';
 import { Component } from 'react'
 import Card from '../Card/Card.js'
 import leagueLogo from '../../img/league-logo.png'
+import { fetchAllChampions } from '../../fetchAPI';
+import Container from '../Container/Container';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-
+      championData: [],
+      error: ''
     }
   }
 
+  componentDidMount = () => {
+    fetchAllChampions()
+    .then(data => {this.setState({championData: data.data})})
+    .catch(error => this.setState({error: error.message}))
+  }
 
   render() {
     return (
@@ -35,7 +43,7 @@ class App extends Component {
             <input type='text' placeholder='Search for a Champion' className='search'></input>
           </div>
         </nav>
-        <Card />
+        {/* <Container championData={this.state.championData}/> */}
       </section>
     )
   }

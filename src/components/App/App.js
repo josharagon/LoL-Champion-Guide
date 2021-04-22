@@ -3,6 +3,12 @@ import { Component } from 'react'
 import leagueLogo from '../../img/league-logo.png'
 import { fetchAllChampions } from '../../fetchAPI';
 import Container from '../Container/Container';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 class App extends Component {
   constructor() {
@@ -15,20 +21,22 @@ class App extends Component {
 
   componentDidMount = () => {
     fetchAllChampions()
-    .then(data => {this.setState({championData: data})})
-    .catch(error => this.setState({error: error.message}))
+      .then(data => { this.setState({ championData: data }) })
+      .catch(error => this.setState({ error: error.message }))
   }
 
   render() {
     return (
       <section>
-        <nav>
-          <div className='logo-container'>
-            <img src={leagueLogo} className='league-logo'></img>
-            <p>eague of Legends <br></br> <br></br>Champion Guide</p>
-          </div>
-          <button className='recommend-button'>Recommend me a Champion</button>
-        </nav>
+        <Link to='/'>
+          <nav>
+            <div className='logo-container'>
+              <img src={leagueLogo} className='league-logo'></img>
+              <p>eague of Legends <br></br> <br></br>Champion Guide</p>
+            </div>
+            <button className='recommend-button'>Recommend me a Champion</button>
+          </nav>
+        </Link>
         <nav>
           <h2>Find Your Champion!</h2>
           <div className='filter-search'>
@@ -42,7 +50,7 @@ class App extends Component {
             <input type='text' placeholder='Search for a Champion' className='search'></input>
           </div>
         </nav>
-        <Container championData={this.state.championData}/>
+        <Container championData={this.state.championData} />
       </section>
     )
   }

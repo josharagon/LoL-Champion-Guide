@@ -1,0 +1,35 @@
+article {
+  margin: 10px;
+  height: fit-content;
+  width: fit-content;
+  position: relative;
+  text-align: center;
+  transition: opacity 1s ease-out;
+  cursor: pointer;
+}
+
+.champion-card {
+  height: 400px;
+}
+
+.hover-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: fadeInAnimation 2s;
+}
+
+.legacy-logo{
+  height: 40px;
+  position: absolute;
+  top: 8px;
+  right: 16px;
+}
+
+@keyframes fadeInAnimation {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+

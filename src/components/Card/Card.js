@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 import './Card.css'
 import champion from '../../singleCharacterData'
-const requestImageFile = require.context('../../img/', true, /.jpg$/);
 
 const Card = () => {
   const championObject = champion[Object.keys(champion)[0]];
@@ -12,10 +11,12 @@ const Card = () => {
     <article 
       onMouseEnter={() => setIsShown(true)}
       onMouseLeave={() => setIsShown(false)}>
-      <img src={require(`../../img/loading/${championObject.name}_0.jpg`).default}></img>
+      <img src={require(`../../img/loading/${championObject.name}_0.jpg`).default} className='champion-card'></img>
+      <img src ={require(`../../img/legacyLogos/${championObject.tags[0]}_icon.png`).default} className='legacy-logo' title={`Class: ${championObject.tags}`}></img>
       {isShown && (
         <div className='hover-message'>
-          I'll appear when you hover over the button.
+          <h2>{championObject.name}</h2>
+          <h4>{championObject.title}</h4>
         </div>
       )}
     </article>

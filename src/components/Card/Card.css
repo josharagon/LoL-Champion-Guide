@@ -1,8 +1,15 @@
 article {
+  height: fit-content;
+  width: fit-content;
+  margin: 0;
   position: relative;
   text-align: center;
   transition: opacity 1s ease-out;
 
+}
+
+.champion-card {
+  height: 400px;
 }
 
 .hover-message {
@@ -11,6 +18,13 @@ article {
   left: 50%;
   transform: translate(-50%, -50%);
   animation: fadeInAnimation 2s;
+}
+
+.legacy-logo{
+  height: 40px;
+  position: absolute;
+  top: 8px;
+  right: 16px;
 }
 
 @keyframes fadeInAnimation {

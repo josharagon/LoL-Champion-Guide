@@ -16,7 +16,7 @@ class App extends Component {
 
   componentDidMount = () => {
     fetchAllChampions()
-    .then(data => {this.setState({championData: data.data})})
+    .then(data => {this.setState({championData: data})})
     .catch(error => this.setState({error: error.message}))
   }
 

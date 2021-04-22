@@ -1,18 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
-import './card.css'
-import data from '../../singleCharacterData'
-const Card = (data) => {
-  var divStyle = {
-    // backgroundImage: "url(" + this.state.song.imgSrc + ")"
-}
+import './Card.css'
+import champion from '../../singleCharacterData'
+const requestImageFile = require.context('../../img/', true, /.jpg$/);
+
+const Card = () => {
+  const championObject = champion[Object.keys(champion)[0]];
+  const [isShown, setIsShown] = useState(false);
+
   return (
-    <article className={divStyle}>
-      
+    <article 
+      onMouseEnter={() => setIsShown(true)}
+      onMouseLeave={() => setIsShown(false)}>
+      <img src={require(`../../img/loading/${championObject.name}_0.jpg`).default}></img>
+      {isShown && (
+        <div className='hover-message'>
+          I'll appear when you hover over the button.
+        </div>
+      )}
     </article>
   )
 }
 
 export default Card;
-
-// `../../img/loading/${data.name}_0.png`

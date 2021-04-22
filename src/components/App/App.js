@@ -1,6 +1,5 @@
 import './App.css';
 import { Component } from 'react'
-import Card from '../Card/Card.js'
 import leagueLogo from '../../img/league-logo.png'
 import { fetchAllChampions } from '../../fetchAPI';
 import Container from '../Container/Container';
@@ -43,7 +42,7 @@ class App extends Component {
             <input type='text' placeholder='Search for a Champion' className='search'></input>
           </div>
         </nav>
-        {/* <Container championData={this.state.championData}/> */}
+        <Container championData={this.state.championData}/>
       </section>
     )
   }

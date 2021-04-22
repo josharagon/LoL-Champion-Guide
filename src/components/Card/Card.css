@@ -1,7 +1,7 @@
 article {
+  margin: 10px;
   height: fit-content;
   width: fit-content;
-  margin: 0;
   position: relative;
   text-align: center;
   transition: opacity 1s ease-out;

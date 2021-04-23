@@ -33,16 +33,35 @@
   width: 35%;
 }
 
+.ability {
+  padding-right: 20px;
+}
 
 .abilities-header {
-  padding-top: 20px;
+  margin: 0;
+  padding: 20px 0px 0px 0px;
   text-align: left;
   font-size: 30px;
+}
+
+.ability-list {
+  display: flex;
+}
+
+.ability-description {
+  width: 40%;
+  text-align: left;
+  font-size: 18px;
+  margin-top: 3px;
 }
 
 .read-more {
   color: gold;
   cursor: pointer;
+}
+
+.underline {
+  color: aqua;
 }
 
 .hidden {

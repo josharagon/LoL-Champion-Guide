@@ -8,13 +8,15 @@ class SingleChampionView extends Component {
     this.state = {
       selectedChampion: {
         tags: []
-      }
+      },
+      activeAbility: '',
     }
   }
 
   componentDidMount() {
     fetchSingleChampion(this.props.selectedChampionId)
-      .then(singleChamp => this.setState({ selectedChampion: singleChamp }))
+      .then(singleChamp => this.setState({ selectedChampion: singleChamp}))
+      .then(() => this.setState({activeAbility: this.state.selectedChampion.spells[0] }))
   }
 
   render() {
@@ -37,9 +39,10 @@ class SingleChampionView extends Component {
           <h1 className='abilities-header'>Abilities</h1>
           <div className='ability-list'>
             {this.state.selectedChampion.spells.map(ability => {
-              return <h3>{ability.name}</h3>
+              return <h3 className='ability' key={ability.name} onClick={() => this.setState({activeAbility: ability})}>{ability.name}</h3>
             })}
           </div>
+          <p className='ability-description'>{this.state.activeAbility.description}</p>
         </div>
       </article>
     )

@@ -1,0 +1,50 @@
+.singleChamp {
+  height: 100%;
+  width:100%;
+  background-color: violet;
+  background-size: cover;
+  margin: 0;
+}
+
+.title-tag {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.title-tag > h3{
+  color: aqua;
+}
+
+.champion-name {
+  text-align: left;
+  font-size: 45px;
+  margin: 5px;
+}
+
+.champion-blurb {
+  text-align: left;
+  padding-top: 20px;
+  width: 35%;
+}
+.champion-lore {
+  text-align: left;
+  padding-top: 20px;
+  width: 35%;
+}
+
+
+.abilities-header {
+  padding-top: 20px;
+  text-align: left;
+  font-size: 30px;
+}
+
+.read-more {
+  color: gold;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}

@@ -3,6 +3,7 @@ import { Component } from 'react'
 import leagueLogo from '../../img/league-logo.png'
 import { fetchAllChampions } from '../../fetchAPI';
 import Container from '../Container/Container';
+import SingleChampionView from '../SingleChampionView/SingleChampionView.js'
 import {
   BrowserRouter as Router,
   Switch,

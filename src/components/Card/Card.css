@@ -8,6 +8,11 @@ article {
   cursor: pointer;
 }
 
+a {
+  text-decoration: none;
+  color: white;
+}
+
 .champion-card {
   height: 400px;
 }

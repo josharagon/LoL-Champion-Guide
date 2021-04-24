@@ -1,9 +1,9 @@
 .singleChamp {
-  height: 100%;
-  width:100%;
-  background-color: violet;
-  background-size: cover;
+  background-size: cover !important;
+  height: -webkit-fill-available;
+  width: -webkit-fill-available;
   margin: 0;
+  padding: 20px 50px 20px 50px;
 }
 
 .title-tag {
@@ -58,6 +58,20 @@
 .read-more {
   color: gold;
   cursor: pointer;
+}
+
+.champion-skins {
+  width: 60%;
+}
+
+.skin-list{
+  display: flex;
+  flex-wrap: wrap;
+  text-align: left;
+}
+
+.skin{
+  padding-right: 20px;
 }
 
 .underline {

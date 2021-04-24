@@ -10,13 +10,14 @@ class SingleChampionView extends Component {
         tags: []
       },
       activeAbility: '',
+      activeSkin: '',
     }
   }
 
   componentDidMount() {
     fetchSingleChampion(this.props.selectedChampionId)
-      .then(singleChamp => this.setState({ selectedChampion: singleChamp}))
-      .then(() => this.setState({activeAbility: this.state.selectedChampion.spells[0] }))
+      .then(singleChamp => this.setState({ selectedChampion: singleChamp }))
+      .then(() => this.setState({ activeAbility: this.state.selectedChampion.spells[0] }))
   }
 
   render() {
@@ -24,7 +25,10 @@ class SingleChampionView extends Component {
       return <h1 className='fetching-data'> LOADING DATA... </h1>
     }
     return (
-      <article className='singleChamp'>
+      <article className='singleChamp' style={{
+        background:
+          `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(${require(`../../img/splash/${this.state.selectedChampion.name}_0.jpg`).default})`
+      }}>
         <div className='title-tag'>
           <h3>{this.state.selectedChampion.title}</h3>
           <div>
@@ -39,10 +43,19 @@ class SingleChampionView extends Component {
           <h1 className='abilities-header'>Abilities</h1>
           <div className='ability-list'>
             {this.state.selectedChampion.spells.map(ability => {
-              return <h3 className='ability' key={ability.name} onClick={() => this.setState({activeAbility: ability})}>{ability.name}</h3>
+              return <h3 className='ability' key={ability.name} onClick={() => this.setState({ activeAbility: ability })}>{ability.name}</h3>
             })}
           </div>
           <p className='ability-description'>{this.state.activeAbility.description}</p>
+        </div>
+        <div className='champion-skins'>
+          <h2 className='abilities-header'>Skins</h2>
+          <div className='skin-list'>
+            {this.state.selectedChampion.skins.map(skin => {
+              return <h3 className='skin' key={skin.name} onClick={() => this.setState({ activeSkin: skin })}>{skin.name}</h3>
+            })}
+          </div>
+
         </div>
       </article>
     )

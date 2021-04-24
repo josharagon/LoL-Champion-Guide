@@ -3,10 +3,14 @@
   text-decoration: none;
 }
 
+html, body, section, #root {
+  height: -webkit-fill-available;
+  width: -webkit-fill-available;
+}
+
 html {
   background-color:#464964;
   color: white;
-  margin: 15px;
 }
 
 nav {

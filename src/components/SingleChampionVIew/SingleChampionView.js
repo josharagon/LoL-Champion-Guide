@@ -28,7 +28,7 @@ class SingleChampionView extends Component {
     return (
       <article className='singleChamp' style={{
         background:
-          `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(${require(`../../img/splash/${this.state.selectedChampion.name}_${this.state.activeSkin.num}.jpg`).default})`
+          `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(${require(`../../img/splash/${this.state.selectedChampion.name.replace(/\s/g, '')}_${this.state.activeSkin.num}.jpg`).default})`
       }}>
         <Link to='/'>
           <h4>Back to home</h4>

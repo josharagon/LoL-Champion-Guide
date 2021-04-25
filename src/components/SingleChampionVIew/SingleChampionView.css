@@ -1,0 +1,92 @@
+.singleChamp {
+  overflow: hidden;
+  overflow-y: scroll;
+  background-size: cover !important;
+  height: -webkit-fill-available;
+  width: -webkit-fill-available;
+  margin: 0;
+  padding: 20px 50px 20px 50px;
+}
+
+.title-tag {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.title-tag > h3{
+  color: aqua;
+}
+
+.champion-name {
+  text-align: left;
+  font-size: 45px;
+  margin: 5px;
+}
+
+.champion-blurb {
+  text-align: left;
+  padding-top: 20px;
+  width: 35%;
+}
+.champion-lore {
+  text-align: left;
+  padding-top: 20px;
+  width: 35%;
+}
+
+.abilities-header {
+  margin: 0;
+  padding: 20px 0px 0px 0px;
+  text-align: left;
+  font-size: 30px;
+}
+
+.ability-list {
+  display: flex;
+}
+
+.ability-description {
+  width: 40%;
+  text-align: left;
+  font-size: 18px;
+  margin-top: 3px;
+}
+
+.ability {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  text-align: center;
+  margin: 15px 30px 0px 0px;
+  width: 5%;
+  cursor: pointer;
+}
+
+.read-more {
+  color: gold;
+  cursor: pointer;
+}
+
+.champion-skins {
+  width: 60%;
+}
+
+.skin-list{
+  display: flex;
+  flex-wrap: wrap;
+  text-align: left;
+}
+
+.skin{
+  padding-right: 20px;
+  cursor: pointer;
+}
+
+.underline {
+  color: aqua;
+}
+
+.hidden {
+  display: none;
+}

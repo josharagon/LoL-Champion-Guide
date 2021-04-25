@@ -5,7 +5,11 @@ article {
   position: relative;
   text-align: center;
   transition: opacity 1s ease-out;
-  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: white;
 }
 
 .champion-card {

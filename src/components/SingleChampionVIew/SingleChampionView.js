@@ -17,17 +17,17 @@ class SingleChampionView extends Component {
   componentDidMount() {
     fetchSingleChampion(this.props.selectedChampionId)
       .then(singleChamp => this.setState({ selectedChampion: singleChamp }))
-      .then(() => this.setState({ activeAbility: this.state.selectedChampion.spells[0] }))
+      .then(() => this.setState({ activeAbility: this.state.selectedChampion.spells[0], activeSkin: this.state.selectedChampion.skins[0] }))
   }
 
   render() {
-    if (!this.state.selectedChampion.tags.length) {
+    if (!this.state.selectedChampion.tags.length || !this.state.activeSkin) {
       return <h1 className='fetching-data'> LOADING DATA... </h1>
     }
     return (
       <article className='singleChamp' style={{
         background:
-          `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(${require(`../../img/splash/${this.state.selectedChampion.name}_0.jpg`).default})`
+          `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(${require(`../../img/splash/${this.state.selectedChampion.name}_${this.state.activeSkin.num}.jpg`).default})`
       }}>
         <div className='title-tag'>
           <h3>{this.state.selectedChampion.title}</h3>

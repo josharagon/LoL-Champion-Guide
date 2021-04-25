@@ -32,7 +32,7 @@ class SingleChampionView extends Component {
         <div className='title-tag'>
           <h3>{this.state.selectedChampion.title}</h3>
           <div>
-            <img src={require(`../../img/legacyLogos/${this.state.selectedChampion.tags[0]}_icon.png`).default}></img>
+            <img src={require(`../../img/legacyLogos/${this.state.selectedChampion.tags[0]}_icon.png`).default} alt='champion-class'></img>
             <h4>{this.state.selectedChampion.tags[0]}</h4>
           </div>
         </div>
@@ -43,10 +43,15 @@ class SingleChampionView extends Component {
           <h1 className='abilities-header'>Abilities</h1>
           <div className='ability-list'>
             {this.state.selectedChampion.spells.map(ability => {
-              return <h3 className='ability' key={ability.name} onClick={() => this.setState({ activeAbility: ability })}>{ability.name}</h3>
+              return (
+                <div className='ability' key={ability.name} onClick={() => this.setState({ activeAbility: ability })}>
+                  <img src={require(`../../img/spell/${ability.image.full}`).default} alt={`${ability.name}`}></img>
+                  <h3>{ability.name}</h3>
+                </div>
+                )
             })}
           </div>
-          <p className='ability-description'>{this.state.activeAbility.description}</p>
+          <p className='ability-description'>{this.state.activeAbility.name}: {this.state.activeAbility.description}</p>
         </div>
         <div className='champion-skins'>
           <h2 className='abilities-header'>Skins</h2>

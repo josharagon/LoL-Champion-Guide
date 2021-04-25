@@ -3,6 +3,7 @@ import { Component } from 'react'
 import leagueLogo from '../../img/league-logo.png'
 import { fetchAllChampions } from '../../fetchAPI';
 import Container from '../Container/Container';
+import SearchBox from '../SearchBox/SearchBox.js'
 import SingleChampionView from '../SingleChampionView/SingleChampionView.js'
 import {
   BrowserRouter as Router,
@@ -16,17 +17,23 @@ class App extends Component {
     super();
     this.state = {
       championData: [],
-      error: ''
+      allChampions: [],
+      error: '',
+      searchValue: '',
     }
   }
 
   componentDidMount = () => {
     fetchAllChampions()
-      .then(data => { this.setState({ championData: data }) })
+      .then(data => { this.setState({ championData: data, allChampions: data}) })
       .catch(error => this.setState({ error: error.message }))
   }
 
   render() {
+    const {championData, searchValue} = this.state
+    const filterChampions = championData.filter(champion => (
+      champion.name.toLowerCase().includes(searchValue.toLowerCase())
+    ))
     return (
       <section>
         <Switch>
@@ -52,10 +59,10 @@ class App extends Component {
                         <option value='4'>Option4</option>
                         <option value='5'>Option5</option>
                       </select>
-                      <input type='text' placeholder='Search for a Champion' className='search'></input>
+                      <SearchBox placeholder='Enter Champion Name' handleChange={(e) => this.setState({searchValue: e.target.value})} />
                     </div>
                   </nav>
-                  <Container championData={this.state.championData} />
+                  <Container championData={filterChampions} />
                 </>
               )
             }}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './SingleChampionView.css';
 import { fetchSingleChampion } from '../../fetchAPI.js'
+import { Link } from 'react-router-dom'
 
 class SingleChampionView extends Component {
   constructor(props) {
@@ -29,6 +30,9 @@ class SingleChampionView extends Component {
         background:
           `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(${require(`../../img/splash/${this.state.selectedChampion.name}_${this.state.activeSkin.num}.jpg`).default})`
       }}>
+        <Link to='/'>
+          <h4>Back to home</h4>
+        </Link>
         <div className='title-tag'>
           <h3>{this.state.selectedChampion.title}</h3>
           <div>

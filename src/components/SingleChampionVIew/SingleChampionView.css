@@ -1,4 +1,6 @@
 .singleChamp {
+  overflow: hidden;
+  overflow-y: scroll;
   background-size: cover !important;
   height: -webkit-fill-available;
   width: -webkit-fill-available;

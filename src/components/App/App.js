@@ -17,7 +17,6 @@ class App extends Component {
     super();
     this.state = {
       championData: [],
-      allChampions: [],
       error: '',
       searchValue: '',
     }
@@ -52,14 +51,8 @@ class App extends Component {
                   <nav>
                     <h2>Find Your Champion!</h2>
                     <div className='filter-search'>
-                      <select name='filterChampions' id='filter'>
-                        <option value='1'>Option1</option>
-                        <option value='2'>Option2</option>
-                        <option value='3'>Option3</option>
-                        <option value='4'>Option4</option>
-                        <option value='5'>Option5</option>
-                      </select>
-                      <SearchBox placeholder='Enter Champion Name' handleChange={(e) => this.setState({searchValue: e.target.value})} />
+                      
+                      <SearchBox placeholder='Search Champions' handleChange={(e) => this.setState({searchValue: e.target.value})} />
                     </div>
                   </nav>
                   <Container championData={filterChampions} />

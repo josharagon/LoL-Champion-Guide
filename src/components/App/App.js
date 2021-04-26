@@ -65,6 +65,7 @@ class App extends Component {
               return (
                 <>
                   <nav>
+                    {console.log(this.state.championData.sort((a, b) => a.stats.movespeed - b.stats.movespeed))}
                     <div className='logo-container'>
                       <img src={leagueLogo} className='league-logo' alt='league of legends logo'></img>
                       <p>eague of Legends <br></br> <br></br>Champion Guide</p>

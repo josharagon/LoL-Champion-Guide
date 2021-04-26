@@ -40,6 +40,34 @@ class App extends Component {
     }
   }
 
+   getRecommendations = (e, classFilter, hpFilter, damageFilter, movementFilter) => {
+    e.preventDefault();
+    let recommendedChampions;
+    // classFilter = 'Assassin'
+    // hpFilter = 340;
+    // damageFilter = 40;
+    // movementFilter = 315;
+
+    if(!classFilter) {
+       recommendedChampions = this.state.championData.filter(champion => {
+        return champion.stats.hp >= hpFilter && 
+        champion.stats.attackdamage >= damageFilter && 
+        champion.stats.movespeed >= movementFilter
+      })
+    } else if (classFilter) {
+      let filteredRecChamps = this.state.championData.filter(champion => {
+        return champion.tags.includes(classFilter)
+      })
+      recommendedChampions = filteredRecChamps.filter(champion => {
+        return champion.stats.hp >= hpFilter && 
+        champion.stats.attackdamage >= damageFilter && 
+        champion.stats.movespeed >= movementFilter
+      })
+    }
+    
+    console.log(recommendedChampions)
+  }
+
 
   render() {
     const { championData, searchValue, dropDownValue } = this.state
@@ -89,8 +117,7 @@ class App extends Component {
           />
           <Route
             exact path='/recommend' render={() =>
-              <RecommendForm />
-            
+              <RecommendForm getRecommendations={this.getRecommendations} championData={this.state.championData}/>
             }/>
           <Route
             exact path='/:id'

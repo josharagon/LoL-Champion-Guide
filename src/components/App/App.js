@@ -64,7 +64,7 @@ class App extends Component {
                   <nav>
                     <h2>Find Your Champion!</h2>
                     <div className='filter-search'>
-                      <DropDownBox  handleChange={(e) => this.setState({dropDownValue: e.target.value})} />
+                      <DropDownBox  handleChange={(e) => this.setState({dropDownValue: e.target.value})} value={this.state.dropDownValue} />
                       <SearchBox placeholder='Search Champions' handleChange={(e) => this.setState({searchValue: e.target.value})} />
                     </div>
                   </nav>

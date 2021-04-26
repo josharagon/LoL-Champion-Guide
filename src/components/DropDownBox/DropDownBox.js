@@ -3,7 +3,7 @@ import React from 'react';
 const DropDownBox = (props) => {
   return (
   <select name='filterChampions' id='filter' onChange={props.handleChange}>
-    <option value={null}>Class</option>
+    <option value='' defaultValue>All Classes</option>
     <option value='Assassin'>Assassin</option>
     <option value='Fighter'>Fighter</option>
     <option value='Mage'>Mage</option>

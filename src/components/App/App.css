@@ -50,3 +50,8 @@ nav {
   display: flex;
   justify-content: space-evenly;
 }
+
+.error {
+  text-align: center;
+  font-size: 40px;
+}

@@ -6,10 +6,8 @@ import Container from '../Container/Container';
 import SearchBox from '../SearchBox/SearchBox.js'
 import SingleChampionView from '../SingleChampionView/SingleChampionView.js'
 import {
-  BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import DropDownBox from '../DropDownBox/DropDownBox';
 
@@ -28,6 +26,16 @@ class App extends Component {
     fetchAllChampions()
       .then(data => { this.setState({ championData: data}) })
       .catch(error => this.setState({ error: error.message }))
+  }
+
+  checkForErrors = () => {
+    if (this.state.error) {
+      return <h1 className='error'>Error loading champions. Please try refreshing the page.</h1>
+    } else if (this.state.championData?.length === 0  && !this.state.error && !this.state.searchValue) {
+      return <h1 className='error'>Loading Data...</h1>
+    } else if (this.state.championData?.length === 0 && !this.state.error && this.state.searchValue) {
+      return <h1 className='error'>No champions found. Try a different search.</h1>
+    }
   }
   
 
@@ -56,7 +64,7 @@ class App extends Component {
                 <>
                   <nav>
                     <div className='logo-container'>
-                      <img src={leagueLogo} className='league-logo'></img>
+                      <img src={leagueLogo} className='league-logo' alt='league of legends logo'></img>
                       <p>eague of Legends <br></br> <br></br>Champion Guide</p>
                     </div>
                     <button className='recommend-button'>Recommend me a Champion</button>
@@ -68,6 +76,7 @@ class App extends Component {
                       <SearchBox placeholder='Search Champions' handleChange={(e) => this.setState({searchValue: e.target.value})} />
                     </div>
                   </nav>
+                  {this.checkForErrors()}
                   <Container championData={filterChampions} />
                 </>
               )

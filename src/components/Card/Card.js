@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 import './Card.css'
-import champion from '../../singleCharacterData'
 
 const Card = (props) => {
   const [isShown, setIsShown] = useState(false);
@@ -11,8 +10,8 @@ const Card = (props) => {
       <article 
         onMouseEnter={() => setIsShown(true)}
         onMouseLeave={() => setIsShown(false)}>
-        <img src={require(`../../img/loading/${props.name}_0.jpg`).default} className='champion-card'></img>
-        <img src ={require(`../../img/legacyLogos/${props.tags[0]}_icon.png`).default} className='legacy-logo' title={`Class: ${props.tags}`}></img>
+        <img src={require(`../../img/loading/${props.name}_0.jpg`).default} className='champion-card' alt={`${props.name} card`}></img>
+        <img src ={require(`../../img/legacyLogos/${props.tags[0]}_icon.png`).default} className='legacy-logo' title={`Class: ${props.tags}`} alt={'champion class logo'}></img>
         {isShown && (
           <div className='hover-message'>
             <h2>{props.name}</h2>

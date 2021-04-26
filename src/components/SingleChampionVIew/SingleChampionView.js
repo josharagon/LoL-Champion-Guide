@@ -23,7 +23,7 @@ class SingleChampionView extends Component {
 
   render() {
     if (!this.state.selectedChampion.tags.length || !this.state.activeSkin) {
-      return <h1 className='fetching-data'> LOADING DATA... </h1>
+      return <h1 className='error'> LOADING DATA... </h1>
     }
     return (
       <article className='singleChamp' style={{

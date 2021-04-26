@@ -3,30 +3,57 @@ import { Component } from 'react'
 import leagueLogo from '../../img/league-logo.png'
 import { fetchAllChampions } from '../../fetchAPI';
 import Container from '../Container/Container';
+import SearchBox from '../SearchBox/SearchBox.js'
 import SingleChampionView from '../SingleChampionView/SingleChampionView.js'
 import {
-  BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
+import DropDownBox from '../DropDownBox/DropDownBox';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       championData: [],
-      error: ''
+      error: '',
+      searchValue: '',
+      dropDownValue: '',
     }
   }
 
   componentDidMount = () => {
     fetchAllChampions()
-      .then(data => { this.setState({ championData: data }) })
+      .then(data => { this.setState({ championData: data}) })
       .catch(error => this.setState({ error: error.message }))
   }
 
+  checkForErrors = () => {
+    if (this.state.error) {
+      return <h1 className='error'>Error loading champions. Please try refreshing the page.</h1>
+    } else if (this.state.championData?.length === 0  && !this.state.error && !this.state.searchValue) {
+      return <h1 className='error'>Loading Data...</h1>
+    } else if (this.state.championData?.length === 0 && !this.state.error && this.state.searchValue) {
+      return <h1 className='error'>No champions found. Try a different search.</h1>
+    }
+  }
+  
+
   render() {
+    const {championData, searchValue, dropDownValue} = this.state
+    let filterChampions;
+    if(!dropDownValue) {
+       filterChampions = championData.filter(champion => (
+        champion.name.toLowerCase().includes(searchValue.toLowerCase())
+      ))
+    } else {
+      const dropDownFilter = championData.filter(champion => (
+        champion.tags.includes(dropDownValue)
+      ))
+       filterChampions = dropDownFilter.filter(champion => (
+        champion.name.toLowerCase().includes(searchValue.toLowerCase())
+      ))
+    }
     return (
       <section>
         <Switch>
@@ -37,7 +64,7 @@ class App extends Component {
                 <>
                   <nav>
                     <div className='logo-container'>
-                      <img src={leagueLogo} className='league-logo'></img>
+                      <img src={leagueLogo} className='league-logo' alt='league of legends logo'></img>
                       <p>eague of Legends <br></br> <br></br>Champion Guide</p>
                     </div>
                     <button className='recommend-button'>Recommend me a Champion</button>
@@ -45,17 +72,12 @@ class App extends Component {
                   <nav>
                     <h2>Find Your Champion!</h2>
                     <div className='filter-search'>
-                      <select name='filterChampions' id='filter'>
-                        <option value='1'>Option1</option>
-                        <option value='2'>Option2</option>
-                        <option value='3'>Option3</option>
-                        <option value='4'>Option4</option>
-                        <option value='5'>Option5</option>
-                      </select>
-                      <input type='text' placeholder='Search for a Champion' className='search'></input>
+                      <DropDownBox  handleChange={(e) => this.setState({dropDownValue: e.target.value})} value={this.state.dropDownValue} />
+                      <SearchBox placeholder='Search Champions' handleChange={(e) => this.setState({searchValue: e.target.value})} />
                     </div>
                   </nav>
-                  <Container championData={this.state.championData} />
+                  {this.checkForErrors()}
+                  <Container championData={filterChampions} />
                 </>
               )
             }}

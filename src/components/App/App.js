@@ -11,6 +11,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import DropDownBox from '../DropDownBox/DropDownBox';
 
 class App extends Component {
   constructor() {
@@ -19,20 +20,32 @@ class App extends Component {
       championData: [],
       error: '',
       searchValue: '',
+      dropDownValue: '',
     }
   }
 
   componentDidMount = () => {
     fetchAllChampions()
-      .then(data => { this.setState({ championData: data, allChampions: data}) })
+      .then(data => { this.setState({ championData: data}) })
       .catch(error => this.setState({ error: error.message }))
   }
+  
 
   render() {
-    const {championData, searchValue} = this.state
-    const filterChampions = championData.filter(champion => (
-      champion.name.toLowerCase().includes(searchValue.toLowerCase())
-    ))
+    const {championData, searchValue, dropDownValue} = this.state
+    let filterChampions;
+    if(!dropDownValue) {
+       filterChampions = championData.filter(champion => (
+        champion.name.toLowerCase().includes(searchValue.toLowerCase())
+      ))
+    } else {
+      const dropDownFilter = championData.filter(champion => (
+        champion.tags.includes(dropDownValue)
+      ))
+       filterChampions = dropDownFilter.filter(champion => (
+        champion.name.toLowerCase().includes(searchValue.toLowerCase())
+      ))
+    }
     return (
       <section>
         <Switch>
@@ -51,7 +64,7 @@ class App extends Component {
                   <nav>
                     <h2>Find Your Champion!</h2>
                     <div className='filter-search'>
-                      
+                      <DropDownBox  handleChange={(e) => this.setState({dropDownValue: e.target.value})} />
                       <SearchBox placeholder='Search Champions' handleChange={(e) => this.setState({searchValue: e.target.value})} />
                     </div>
                   </nav>

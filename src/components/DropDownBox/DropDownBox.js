@@ -2,13 +2,14 @@ import React from 'react';
 
 const DropDownBox = (props) => {
   return (
-    <select name='filterChampions' id='filter'>
-    <option value='1'>Assassin</option>
-    <option value='2'>Fighter</option>
-    <option value='3'>Mage</option>
-    <option value='4'>Marksman</option>
-    <option value='5'>Support</option>
-    <option value='6'>Tank</option>
+  <select name='filterChampions' id='filter' onChange={props.handleChange}>
+    <option value={null}>Class</option>
+    <option value='Assassin'>Assassin</option>
+    <option value='Fighter'>Fighter</option>
+    <option value='Mage'>Mage</option>
+    <option value='Marksman'>Marksman</option>
+    <option value='Support'>Support</option>
+    <option value='Tank'>Tank</option>
   </select>
   )
 }

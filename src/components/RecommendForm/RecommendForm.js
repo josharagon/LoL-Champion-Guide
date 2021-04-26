@@ -3,6 +3,7 @@ import './RecommendForm.css'
 import {Link} from 'react-router-dom'
 
 const RecommendForm = (props) => {
+  const [classVal, setClassVal] = useState('')
   const [hpVal, setHpVal] = useState(340);
   const [movementSpeedVal, setMovementSpeedVal] = useState(315);
   const [damageVal, setDamageVal] = useState(40);
@@ -10,7 +11,7 @@ const RecommendForm = (props) => {
   return (
     <form className='recommend-form'>
       <h1>Recommend Me A Champion</h1>
-      <select name='recommendChampions' id='filter'>
+      <select name='recommendChampions' id='filter' onChange={(e) => setClassVal(e.target.value)} value={classVal}>
         <option value='' defaultValue>All Classes</option>
         <option value='Assassin'>Assassin</option>
         <option value='Fighter'>Fighter</option>
@@ -34,7 +35,7 @@ const RecommendForm = (props) => {
         <input type="range" min="315" max="355" onChange={(e) => setMovementSpeedVal(e.target.value)}></input>
         <p>{movementSpeedVal}</p>
       </div>
-      <button onClick={props.getRecommendations}>Get Recommendations</button>
+      <button onClick={(e) => props.getRecommendations(e, classVal, hpVal, damageVal, movementSpeedVal)}>Get Recommendations</button>
       <Link to='/'><h1>Back to home</h1></Link>
     </form>
   )

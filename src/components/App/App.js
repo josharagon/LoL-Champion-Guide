@@ -117,7 +117,7 @@ class App extends Component {
           />
           <Route
             exact path='/recommend' render={() =>
-              <RecommendForm getRecommendations={this.getRecommendations} championData={this.state.championData}/>
+              <RecommendForm getRecommendations={this.getRecommendations} />
             }/>
           <Route
             exact path='/:id'

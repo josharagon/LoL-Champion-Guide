@@ -12,6 +12,7 @@ class SingleChampionView extends Component {
       },
       activeAbility: '',
       activeSkin: '',
+      readMore: false,
     }
   }
 
@@ -19,6 +20,18 @@ class SingleChampionView extends Component {
     fetchSingleChampion(this.props.selectedChampionId)
       .then(singleChamp => this.setState({ selectedChampion: singleChamp }))
       .then(() => this.setState({ activeAbility: this.state.selectedChampion.spells[0], activeSkin: this.state.selectedChampion.skins[0] }))
+  }
+
+  handleReadMore = () => {
+    if(this.state.readMore === false) {
+      return ( 
+        <p className='champion-blurb'>"{this.state.selectedChampion.blurb}" <span className='read-more' onClick={() => this.setState({readMore: true})}>Read More...</span></p>
+      )
+    } else {
+      return( 
+        <p className='champion-blurb'>"{this.state.selectedChampion.lore}" <span className='read-more' onClick={() => this.setState({readMore: false})}>Read Less...</span></p>
+      )
+    }
   }
 
   render() {
@@ -41,8 +54,9 @@ class SingleChampionView extends Component {
           </div>
         </div>
         <h2 className='champion-name'>{this.state.selectedChampion.name}</h2>
-        <p className='champion-blurb'>"{this.state.selectedChampion.blurb}" <span className='read-more'>Read More...</span></p>
-        <p className='champion-lore hidden'>"{this.state.selectedChampion.lore}"</p>
+        {this.handleReadMore()}
+        {/* <p className='champion-blurb'>"{this.state.selectedChampion.blurb}" <span className='read-more' onClick={() => this.setState({readMore: true})}>Read More...</span></p>
+        <p className='champion-lore hidden'>"{this.state.selectedChampion.lore}"</p> */}
         <div className='champion-abilities'>
           <h1 className='abilities-header'>Abilities</h1>
           <div className='ability-list'>

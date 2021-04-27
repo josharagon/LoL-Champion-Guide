@@ -1,12 +1,29 @@
 import React, { useState } from 'react';
 import './RecommendForm.css'
 import {Link} from 'react-router-dom'
+import Card from '../Card/Card';
 
 const RecommendForm = (props) => {
   const [classVal, setClassVal] = useState('')
   const [hpVal, setHpVal] = useState(340);
   const [movementSpeedVal, setMovementSpeedVal] = useState(315);
   const [damageVal, setDamageVal] = useState(40);
+  const [recommendedChampions, setRecommendedChampions] = useState([])
+
+  function yourRecommendedCharacter() {
+    if(recommendedChampions.length > 0) {
+      for (var i = recommendedChampions.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = recommendedChampions[i];
+        recommendedChampions[i] = recommendedChampions[j];
+        recommendedChampions[j] = temp;
+      }
+      console.log(recommendedChampions[0])
+      return <Card key={recommendedChampions[0].id} id={recommendedChampions[0].id} name={recommendedChampions[0].name} title={recommendedChampions[0].title} tags={recommendedChampions[0].tags}/>
+    } else {
+      return
+    }
+  }
 
   return (
     <form className='recommend-form'>
@@ -35,7 +52,8 @@ const RecommendForm = (props) => {
         <input type="range" min="315" max="355" onChange={(e) => setMovementSpeedVal(e.target.value)}></input>
         <p>{movementSpeedVal}</p>
       </div>
-      <button onClick={(e) => props.getRecommendations(e, classVal, hpVal, damageVal, movementSpeedVal)}>Get Recommendations</button>
+      <button onClick={(e) => setRecommendedChampions(props.getRecommendations(e, classVal, hpVal, damageVal, movementSpeedVal))}>Get Recommendation</button>
+      {yourRecommendedCharacter()}
       <Link to='/'><h1>Back to home</h1></Link>
     </form>
   )

@@ -43,10 +43,6 @@ class App extends Component {
    getRecommendations = (e, classFilter, hpFilter, damageFilter, movementFilter) => {
     e.preventDefault();
     let recommendedChampions;
-    // classFilter = 'Assassin'
-    // hpFilter = 340;
-    // damageFilter = 40;
-    // movementFilter = 315;
 
     if(!classFilter) {
        recommendedChampions = this.state.championData.filter(champion => {
@@ -65,7 +61,7 @@ class App extends Component {
       })
     }
     
-    console.log(recommendedChampions)
+    return(recommendedChampions)
   }
 
 

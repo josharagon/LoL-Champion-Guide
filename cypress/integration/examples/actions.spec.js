@@ -48,20 +48,47 @@ describe('Recommend Form', () => {
   })
 
   describe('Sad Path', () => {
-    beforeEach(() => {
-      cy.fixture('mockChampions.json')
-      .then(champData => {
-          cy.intercept('GET', 'http://ddragon.leagueoflegends.com/cdn/11.8.1/data/en_US/champion.json', {
-              statusCode: 200,
-              body: ''
-          })
-      })
-      cy.visit('http://localhost:3000/')
-    })
 
     it('Should show appropriate message if fetching data fails', () => {
+      cy.intercept({
+        method: 'GET',
+        url: 'http://ddragon.leagueoflegends.com/cdn/11.8.1/data/en_US/champion.json'
+      },
+        {
+          statusCode: 500,
+          body:''
+        });
+        cy.visit('http://localhost:3000/')
       cy.get('h1').contains('Error loading champions. Please try refreshing the page')
     })
+
+    it('Should show appropriate message user goes to a URL that doesn\'t exist', () => {
+      cy.intercept({
+        method: 'GET',
+        url: 'http://ddragon.leagueoflegends.com/cdn/11.8.1/data/en_US/champion.json'
+      },
+        {
+          statusCode: 500,
+          body:''
+        });
+        cy.visit('http://localhost:3000/bruh')
+      cy.get('h1').contains('Champion does not exist')
+    })
+
+    it('Should show appropriate message if the recommended champion does not exist', () => {
+      cy.intercept({
+        method: 'GET',
+        url: 'http://ddragon.leagueoflegends.com/cdn/11.8.1/data/en_US/champion.json'
+      },
+        {
+          statusCode: 500,
+          body:''
+        });
+        cy.visit('http://localhost:3000/')
+        cy.get('.recommend-button').click()
+    
+    })
+
   })
 
 })

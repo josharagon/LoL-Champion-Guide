@@ -41,20 +41,20 @@ const RecommendForm = (props) => {
       </select>
       <div className='slider-div'>
         <label>Min Hp:</label>
-        <input  type="range" min="340" max="626" onChange={(e) => setHpVal(e.target.value)}></input>
+        <input id='minHp' type="range" min="340" max="626" onChange={(e) => setHpVal(e.target.value)}></input>
         <p>{hpVal}</p>
       </div>
       <div className='slider-div'>
         <label>Min Damage:</label>
-        <input type="range" min="40" max="72" defaultValue='40' onChange={(e) => setDamageVal(e.target.value)}></input>
+        <input id='minDamage' type="range" min="40" max="72" defaultValue='40' onChange={(e) => setDamageVal(e.target.value)}></input>
         <p>{damageVal}</p>
       </div>
       <div className='slider-div'>
         <label>Min Movement Speed:</label>
-        <input type="range" min="315" max="355" onChange={(e) => setMovementSpeedVal(e.target.value)}></input>
+        <input id='minMoveSpeed' type="range" min="315" max="355" onChange={(e) => setMovementSpeedVal(e.target.value)}></input>
         <p>{movementSpeedVal}</p>
       </div>
-      <button onClick={(e) => setRecommendedChampions(props.getRecommendations(e, classVal, hpVal, damageVal, movementSpeedVal))}>Get Recommendation</button>
+      <button id='submitButton' onClick={(e) => setRecommendedChampions(props.getRecommendations(e, classVal, hpVal, damageVal, movementSpeedVal))}>Get Recommendation</button>
       {yourRecommendedCharacter()}
       <Link to='/'><h1>Back to home</h1></Link>
     </form>

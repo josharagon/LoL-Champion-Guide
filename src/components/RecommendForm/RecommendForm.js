@@ -20,8 +20,10 @@ const RecommendForm = (props) => {
       }
       console.log(recommendedChampions[0])
       return <Card key={recommendedChampions[0].id} id={recommendedChampions[0].id} name={recommendedChampions[0].name} title={recommendedChampions[0].title} tags={recommendedChampions[0].tags}/>
+    } else if (recommendedChampions.length === 0 && hpVal !== 340 || recommendedChampions.length === 0 && movementSpeedVal !== 315) {
+      return <h1>No Champions Found.</h1>
     } else {
-      return
+      return 
     }
   }
 

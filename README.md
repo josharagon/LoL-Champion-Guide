@@ -19,15 +19,15 @@ $npm start
 
 ## Usage
 1. On Page Load You Can View Every Champion Available
-![page load](https://gyazo.com/7f18eb329f1c5f004603afb2d6b0e290.gif)
+![page load](https://github.com/josharagon/LoL-Champion-Guide/blob/main/src/img/gif/pageload.gif)
 
 
 2. You can filter by class type, or search for a specific champion name... or both
-![filtering](https://gyazo.com/7f18eb329f1c5f004603afb2d6b0e290.gif)
+![filtering](https://github.com/josharagon/LoL-Champion-Guide/blob/main/src/img/gif/filter.gif)
 
 
 3. You can click on a champion card to view more specific details about that character
-![single character view](https://gyazo.com/426f0d0ceb53ce032864640d5c7a85da.gif)
+![single character view](https://github.com/josharagon/LoL-Champion-Guide/blob/main/src/img/gif/singlechamp.gif)
 
 
 4.You can click recommend me a champion and fill out to your liking and receive a champion to look into.

@@ -55,8 +55,6 @@ class SingleChampionView extends Component {
         </div>
         <h2 className='champion-name'>{this.state.selectedChampion.name}</h2>
         {this.handleReadMore()}
-        {/* <p className='champion-blurb'>"{this.state.selectedChampion.blurb}" <span className='read-more' onClick={() => this.setState({readMore: true})}>Read More...</span></p>
-        <p className='champion-lore hidden'>"{this.state.selectedChampion.lore}"</p> */}
         <div className='champion-abilities'>
           <h1 className='abilities-header'>Abilities</h1>
           <div className='ability-list'>

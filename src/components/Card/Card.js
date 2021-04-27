@@ -8,6 +8,7 @@ const Card = (props) => {
   return (
     <Link to={`/${props.id}`}>
       <article 
+        id={props.id}
         onMouseEnter={() => setIsShown(true)}
         onMouseLeave={() => setIsShown(false)}>
         <img src={require(`../../img/loading/${props.name}_0.jpg`).default} className='champion-card' alt={`${props.name} card`}></img>

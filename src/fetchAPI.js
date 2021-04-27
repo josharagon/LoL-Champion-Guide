@@ -3,6 +3,7 @@ export const fetchAllChampions = () => {
   .then(response => response.json())
   .then(allChampions => {
     const championArray = Object.keys(allChampions.data).map((key) => allChampions.data[key])
+    console.log(championArray)
     return championArray
   })
 }
